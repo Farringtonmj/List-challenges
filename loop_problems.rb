@@ -245,57 +245,43 @@ def merge1(list, list2)
 end
 
 
-#def list_done?(list, time_done)
-#    if list.size - times = 0
-#        return true
-#    else
-#        return false
-#    end
-#end
-#
-#def merge2(list, list2) #no nested loops
-#    new_array = []
-#    a_times = 0
-#    b_times = 0
-#    a = list[0].to_f
-#    b = list2[0].to_f
-#    while !list_done?(list, a_times)
-#        while !list_done?(list2, b_times)
-#            puts a
-#            puts b
-#            if a < b
-#                new_array.push(a)
-#                a_times +=1
-#                a = list[a_times].to_f
-#            elsif a > b
-#                new_array.push(b)
-#                b_times += 1
-#                b = list2[b_times].to_f
-#            else
-#                new_array.push(a)
-#                new_array.push(b)
-#                a_times += 1
-#                b_times += 1
-#                a = list[a_times].to_f
-#                b = list2[b_times].to_f
-#            end
-#        end
-#    end
-#    if !list_done?(list, a_times)
-#        (list2.size - b_times).times do |i|
-#            new_array.push(list[i])
-#        end
-#    else
-#        (list.size - a_times).times do |i|
-#            new_array.push(list[i])
-#        end
-#    end
-#
-#    return new_array
-#
-#end
-#
-#
-#print merge2([1, 2, 4], [3, 5, 6])      
-#puts "\n"
-#print merge2([1, 3, 5, 7, 9, 10], [2, 4, 6, 8, 10])  
+def merge2(list, list2) #no nested loops
+    new_array = []
+    a_times = 0
+    b_times = 0
+    a = list[0].to_f
+    b = list2[0].to_f
+    last1 = list[(list.size-1)].to_f
+    last2 = list2[(list2.size-1)].to_f
+    puts last2
+    puts last1
+    while a != last1 && b != last2
+        if a < b
+            new_array.push(a, "a")
+            a_times +=1
+            a = list[a_times].to_f
+            puts a
+        else # a > b
+            new_array.push(b, "b")
+            b_times += 1
+            b = list2[b_times].to_f
+            puts b
+        end
+    end
+    if b == last2
+        (list2.size - b_times).times do |i|
+            new_array.push(list[i])
+        end
+    else
+        (list.size - a_times).times do |i|
+            new_array.push(list[i])
+        end
+    end 
+    return new_array    
+
+end
+
+
+print merge2([1, 2, 4], [3, 5, 6])      
+puts "\n"
+print merge2([1, 3, 5, 7, 9], [2, 4, 6, 8, 10])  
