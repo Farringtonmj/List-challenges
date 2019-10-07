@@ -258,7 +258,7 @@ def merge2(list, list2) #no nested loops
             new_array.push(a)
             a_times +=1
             a = list[a_times].to_f
-        else # a > b
+        else  a > b
             new_array.push(b)
             b_times += 1
             b = list2[b_times].to_f
