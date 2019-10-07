@@ -253,19 +253,15 @@ def merge2(list, list2) #no nested loops
     b = list2[0].to_f
     last1 = list[list.size].to_f
     last2 = list2[list2.size].to_f
-    puts last2
-    puts last1
     while a != last1 && b != last2
         if a < b
             new_array.push(a)
             a_times +=1
             a = list[a_times].to_f
-            puts a
         else # a > b
             new_array.push(b)
             b_times += 1
             b = list2[b_times].to_f
-            puts b
         end
     end
     if b == last2
